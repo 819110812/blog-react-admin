@@ -10,12 +10,13 @@ describe('Login', () => {
 
   beforeEach(async () => {
     page = await browser.newPage();
-    await page.goto('http://localhost:8000/user/login', { waitUntil: 'networkidle2' });
+    await page.goto('http://localhost:8080/user/login', { waitUntil: 'networkidle2' });
     await page.evaluate(() => window.localStorage.setItem('antd-pro-authority', 'guest'));
   });
 
   afterEach(() => page.close());
 
+  it('should login with failure', async () => {
   it('should login with failure', async () => {
     await page.waitForSelector('#userName', {
       timeout: 2000,
